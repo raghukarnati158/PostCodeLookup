@@ -1,0 +1,25 @@
+<div class="container">
+    <h1 style=margin-top:25px;>Delivery Options</h1>
+    <div class="input-group mb-3" style="width:800px;">
+        <input #postcode class="form-control shadow-none" placeholder="Enter Postcode" aria-label="Enter Postcode" aria-describedby="basic-addon2">
+        <div class="input-group-append">
+          <button class="btn btn-primary shadow-none" type="button" (click)="GetDeliveryInfo(postcode.value)">Find</button>
+        </div>
+      </div>
+
+    <table class="table table-striped" style=width:800px;margin-top:25px;>
+        <thead *ngIf="deliveries.length">
+        <tr>
+            <th scope="col">Delivery options for Postcode '{{postcode.value}}'</th>
+        </tr>
+        </thead>
+        <tbody *ngIf="deliveries.length">
+            <tr *ngFor="let delivery of deliveries; let i = index">
+                <td>{{delivery}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div *ngIf="!deliveries.length && postcode.value != ''" style=width:800px;margin-top:25px;>
+        <p>No delivery options found for Postcode: {{postcode.value}}</p>
+    </div>
+</div>
